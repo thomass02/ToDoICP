@@ -6,23 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
   // define list of items
-  items= [];
+  title = 'To-Do List';
+  todoList: any[] = [];
+  todoItem = '';
 
   // Write code to push new item
-  submitNewItem() {
-
-  }
-
-  // Write code to complete item
-  completeItem() {
-
+  submitNewItem(item: string) {
+    this.todoList.push({id: this.todoList.length, name: item});
   }
 
   // Write code to delete item
-  deleteItem() {
-
+  deleteItem(id: number) {
+    this.todoList = this.todoList.filter(item => item.id !== id);
   }
 
 }

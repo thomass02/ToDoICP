@@ -2,11 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Calculator</title>
-  // 1. write Typescript code in "app.component.ts" to work with ToDo list
+  <title>{{ title }}</title>
+  <!-- // 1. write Typescript code in "app.component.ts" to work with -->
 </head>
-<body>
-// 2. write html(view) code to display the ToDos
 
+<body ng-app="toDo">
+
+<div class="header">
+  <h2>Personal To Do List</h2>
+</div>
+
+<!-- // 2. write html(view) code to display the ToDos -->
+<!-- add new items to list -->
+<div class="container">
+  <input type="text" placeholder="enter new item" #task />
+  <button (click)="submitNewItem(task.value)" >Add New Item</button>
+</div>
+
+<!--cycles through the items in the list (if checkbox is check use strikethrough to show complete) -->
+<div class="list-container "*ngFor="let item of todoList; let i = index">
+      <div class="checkbox">
+        <label>
+          <span class="title">Item</span> {{i + 1}}
+          <input type="checkbox" class="strikethrough" value="1">
+          <span class="name">{{item.name}}</span>
+          <!-- allow deletion of items -->
+          <button (click)="deleteItem(item.id)">Remove</button>
+        </label>
+      </div>
+</div>
 </body>
 </html>
